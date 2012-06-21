@@ -2,15 +2,34 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>jQuery Speedometer</title>
 <script language="javascript" src="jquery.js"></script>
 <script language="javascript" src="raphael-min.js"></script>
 <script language="javascript" src="j.doe.speedometer.js"></script>
 <script language="javascript">
 $( function(){
-	console.log("Start");
 	
-	$("#speedometer").doespeedometer({value:200});
+	$("#speedometer").doespeedometer({
+		title: "Test 1",
+		valueText:'few afja kflewja\nkfeajfkelwaö j',
+		unit: function(value){return value+'%';},
+		requirementColor:"#74a997"
+	});
+	$("#speedometer2").doespeedometer({
+		title: "Test 2",
+		value:50,
+		valueText:'Testar lite',
+		unit: function(value){return value;},
+		requirementColor:"#74a997",
+		width:200,
+		height:200,
+		thickness: 20
+	});
+	
+	$("#setvalue").click(function(){
+		$("#speedometer").doespeedometer("setValue",100);
+		return false;
+	});
 	
 });
 
@@ -19,6 +38,8 @@ $( function(){
 <body>
 <h1>Demo of jDoeSpeedometer</h1>
 <hr>
-<div id="speedometer" style="display:inline-block;"></div>
+<div id="speedometer" style="display:inline-block;border:1px #ccc dashed;"></div>
+<div id="speedometer2" style="display:inline-block;border:1px #ccc dashed;"></div>
+<a href="#" id="setvalue">Set value</a>
 </body>
 </html>
